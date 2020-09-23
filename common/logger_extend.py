@@ -28,5 +28,8 @@ class LoggerExtend(object):
 
 if __name__ == '__main__':
     logger = LoggerExtend(os.path.basename(__file__).replace(".py", ".log")).get_logger
+    import time
+    while True:
 
-    logger.info("你好aaa")
+        logger.info("你好aaa")
+        time.sleep(2)
