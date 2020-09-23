@@ -13,3 +13,4 @@
 - https://medium.com/@yushlai1987/python-websocket-client%E5%AF%A6%E4%BD%9C-f51c2fe6a1b4
 - http://www.52im.net/thread-1341-1-1.html
 - http://www.52im.net/thread-331-1-1.html
+- http://shzhangji.com/blog/2017/07/15/log-tailer-with-websocket-and-python/
