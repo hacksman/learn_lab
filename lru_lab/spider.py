@@ -2,13 +2,13 @@
 # @Time : 2021/2/25 7:49 AM
 
 from loguru import logger
+
 from abc import (ABC, abstractmethod)
 
 import requests
 
 
 class BaseSpider(ABC):
-
     _headers = {
         'accept': 'application/json, text/plain, */*',
         "accept-encoding": "gzip, deflate, br",
@@ -29,27 +29,27 @@ class BaseSpider(ABC):
 
 
 class ZhihuSpider(BaseSpider):
-
     url = "https://www.zhihu.com/api/v3/feed/topstory/hot-lists/total?limit=50&desktop=true"
 
     def spider(self):
-        resp = requests.get(self.url, headers=self._headers)
+        logger.debug("开始知乎爬虫...")
+        resp = requests.get(self.url, headers=self._headers, timeout=30)
         return resp.json()
 
 
 class V2exSpider(BaseSpider):
-
     url = "https://www.v2ex.com/api/topics/hot.json"
 
     def spider(self):
-        resp = requests.get(self.url, headers=self._headers)
+        resp = requests.get(self.url, headers=self._headers, timeout=30)
 
         return resp.json()
 
 
-if __name__ == '__main__':
-    z = ZhihuSpider()
-    print(z.spider())
+class BilibiliSpider(BaseSpider):
+    url = "https://api.bilibili.com/x/web-interface/ranking/v2?rid=0&type=all"
 
-    v = V2exSpider()
-    print(v.spider())
+    def spider(self):
+        resp = requests.get(self.url, headers=self._headers, timeout=30)
+        return resp.json()
+
