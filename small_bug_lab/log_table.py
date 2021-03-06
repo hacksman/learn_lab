@@ -29,6 +29,10 @@ def gen_faker_data():
     return datas
 
 
+def gen_csv_fmt(results):
+    for item in results:
+        print(",".join(map(lambda x: str(x), item)))
+
 def raw_log(results, headers):
     for per_item in results:
         log_item = ""
@@ -55,6 +59,7 @@ def tabulate_log(results, headers):
 
 if __name__ == '__main__':
     results = gen_faker_data()
+    gen_csv_fmt(results)
     headers = ["root_path", "url", "priority", "is_once", "switch", "created", "updated"]
     raw_log(results, headers)
     columnar_log(results, headers)
