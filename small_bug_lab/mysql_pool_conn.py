@@ -45,6 +45,8 @@ class MysqlClient(object):
                                              cursorclass=pymysql.cursors.DictCursor
                                              )
             self.__class__.__pool_map[(host, port, db, user, password)] = self.__class__.__pool
+        else:
+            self.__class__.__pool = self.__class__.__pool_map.get((host, port, db, user, password))
 
         self._conn = None
         self._cursor = None
@@ -119,7 +121,7 @@ if __name__ == "__main__":
         "port": 3306,
         "db": "test_demo",
         "user": "root",
-        "password": "your mysql password here"
+        "password": "play10086"
     }
 
     # 测试查看在最小缓存初始化缓存
