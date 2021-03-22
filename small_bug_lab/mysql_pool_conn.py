@@ -121,7 +121,7 @@ if __name__ == "__main__":
         "port": 3306,
         "db": "test_demo",
         "user": "root",
-        "password": "play10086"
+        "password": "your mysql password here"
     }
 
     # 测试查看在最小缓存初始化缓存
