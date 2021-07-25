@@ -16,8 +16,12 @@ class SingleLinkedList:
     def __init__(self):
         self.head = None
 
-    def add_first(self):
-        pass
+    def add_first(self, n):
+        if not self.head:
+            self.head = n
+        else:
+            n.next = self.head
+            self.head = n
 
     def add_last(self, n):
         if not self.head:
@@ -28,14 +32,43 @@ class SingleLinkedList:
                 pass
             current_node.next = n
 
-    def add_before(self):
-        pass
+    def add_before(self, value, n):
+        if not self.head:
+            return
 
-    def add_after(self):
-        pass
+        if self.head.data == value:
+            self.add_first(n)
+            return
 
-    def remove_node(self):
-        pass
+        prev_node = self.head
+        for current_node in self:
+            if current_node.data == value:
+                prev_node.next = n
+                n.next = current_node
+                return
+            prev_node = current_node
+
+    def add_after(self, value, n):
+        if not self.head:
+            return
+
+        if self.head.data == value:
+            self.add_last(n)
+
+        for current_node in self:
+            if current_node.data == value:
+                after_node = current_node.next
+                current_node.next = n
+                n.next = after_node
+
+    def remove_node(self, value):
+        prev_node = self.head
+        for current_node in self:
+            if current_node.data == value:
+                prev_node.next = current_node.next
+                return
+            prev_node = current_node
+        print(f"data =「{value}」 not in linked list")
 
     def reserve_node(self):
         pass
@@ -47,20 +80,28 @@ class SingleLinkedList:
             node = node.next
 
     def __repr__(self):
-        result = [_.data for _ in self]
-        return f"->{'->'.join(result)}->None"
+        if self.head:
+            result = [_.data for _ in self]
+            return f"->{'->'.join(result)}->None"
+        return 'empty linked list'
 
 
 if __name__ == '__main__':
     A = Node('A')
     B = Node('B')
     C = Node('C')
+    D = Node('D')
+    E = Node('E')
 
     s = SingleLinkedList()
-    s.add_node(A)
-    s.add_node(B)
-    s.add_node(C)
+    s.add_last(A)
+    s.add_last(B)
+    s.add_last(C)
+    s.add_last(D)
+    s.add_last(E)
+    # s.add_after('D', E)
+    s.remove_node('F')
 
-    for i in s:
-        print(i)
+    # for i in s:
+    #     print(i)
     print(s)
