@@ -71,6 +71,9 @@ class SingleLinkedList:
         print(f"data =「{value}」 not in linked list")
 
     def reserve_node(self):
+        """
+        :💡: 反转好的数据放在左边，中间值存储链表遍历的值，遍历完了之后，中间值的下一步可以把之前存储在左边的反转数据接过来
+        """
         if not self.head:
             return
 
