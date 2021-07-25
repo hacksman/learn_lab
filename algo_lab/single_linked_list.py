@@ -71,7 +71,18 @@ class SingleLinkedList:
         print(f"data =「{value}」 not in linked list")
 
     def reserve_node(self):
-        pass
+        if not self.head:
+            return
+
+        l, m, r = None, None, self.head
+
+        while r is not None:
+            l = m
+            m = r
+            r = r.next
+            m.next = l
+
+        self.head = m
 
     def __iter__(self):
         node = self.head
@@ -100,8 +111,8 @@ if __name__ == '__main__':
     s.add_last(D)
     s.add_last(E)
     # s.add_after('D', E)
-    s.remove_node('F')
+    # s.remove_node('F')
+    print(s)
+    s.reserve_node()
 
-    # for i in s:
-    #     print(i)
     print(s)
