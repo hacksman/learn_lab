@@ -13,8 +13,11 @@ class Node:
 
 class SingleLinkedList:
 
-    def __init__(self):
+    def __init__(self, link_values=None):
         self.head = None
+        if link_values:
+            for item in link_values:
+                self.add_last(Node(item))
 
     def add_first(self, n):
         if not self.head:
@@ -115,7 +118,10 @@ if __name__ == '__main__':
     s.add_last(E)
     # s.add_after('D', E)
     # s.remove_node('F')
-    print(s)
-    s.reserve_node()
+    # print(next(s))
+    # print(next(s))
+    # print(next(s))
+    # print(next(s))
+    # s.reserve_node()
 
-    print(s)
+    # print(s)
