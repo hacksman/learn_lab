@@ -38,9 +38,7 @@ def is_palindrome(linked_list):
 
 
 if __name__ == '__main__':
-    # l = SingleLinkedList(['l', 'e', 'v', 'e', 'l'])
-    l = SingleLinkedList(['l', 'o'])
-
-    print(l)
-
-    print(is_palindrome(l))
+    level = SingleLinkedList(['l', 'e', 'v', 'e', 'l'])
+    lo = SingleLinkedList(['l', 'o'])
+    assert is_palindrome(level) is True
+    assert is_palindrome(lo) is False
