@@ -5,49 +5,42 @@
 # 单链表结构
 # 快慢指针
 from copy import deepcopy
+from algo_lab.single_linked_list import SingleLinkedList
 
 
-class Node:
-
-    def __init__(self, data, n=None):
-        self.data = data
-        self.next = n
-
-
-def is_palindrome(node):
+def is_palindrome(linked_list):
     before = []
     after = []
 
     middle = None
 
-    if node == "" or node is None:
+    if linked_list == "" or linked_list is None:
         return False
 
-    if node.next is None:
-        return True
+    fast = deepcopy(linked_list)
 
-    fast = deepcopy(node)
-
-    while node:
+    for step, slow in enumerate(linked_list):
         if middle is None:
-            before.insert(0, node.data)
+            before.insert(0, slow.data)
         else:
-            after.append(node.data)
-        node = node.next
-        if fast and middle is None:
-            fast = fast.next.next
-        if fast and fast.next is None and not middle:
-            middle = node.data
-    return before == after[1:]
+            after.append(slow.data)
+
+        tail = True
+        f_node = ''
+        for f_step, f_node in enumerate(fast):
+            if f_step == step * 2 + 1:
+                tail = False
+                break
+        if tail:
+            middle = f_node.data
+
+    return before[1:] == after[:]
 
 
 if __name__ == '__main__':
-    l = Node('l')
-    l.next = Node('e')
-    l.next.next = Node('i')
-    l.next.next.next = Node('v')
-    l.next.next.next.next = Node('i')
-    l.next.next.next.next.next = Node('e')
-    l.next.next.next.next.next.next = Node('l')
+    # l = SingleLinkedList(['l', 'e', 'v', 'e', 'l'])
+    l = SingleLinkedList(['l', 'o'])
+
+    print(l)
 
     print(is_palindrome(l))
