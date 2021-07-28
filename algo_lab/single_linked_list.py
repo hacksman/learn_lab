@@ -11,6 +11,9 @@ class Node:
         return self.data
 
     def __iter__(self):
+        """
+         当出现循环链表的时候，某个 node 自身也需要支持可迭代性
+        """
         node = self
         while node:
             yield node
