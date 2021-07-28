@@ -116,6 +116,11 @@ if __name__ == '__main__':
     s.add_last(C)
     s.add_last(D)
     s.add_last(E)
+
+    # 中环链表
+    s.head.next.next.next.next.next = s.head.next.next
+
+    #     pass
     # s.add_after('D', E)
     # s.remove_node('F')
     # print(next(s))
@@ -124,4 +129,4 @@ if __name__ == '__main__':
     # print(next(s))
     # s.reserve_node()
 
-    # print(s)
+    print(s)
