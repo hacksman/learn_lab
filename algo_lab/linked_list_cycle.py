@@ -28,6 +28,11 @@ if __name__ == '__main__':
 
     # A -> B -> C -> D -> E  -> C -> D -> E -> C -> D -> E -> C -> D -> E -> C -> D -> E
     not_l_c = SingleLinkedList(["A", "B", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E"])
+
+    # A->
+    only_one_node = SingleLinkedList(["A"])
+
     print(has_cycle(l))
     print(has_cycle(l_c))
     print(has_cycle(not_l_c))
+    print(has_cycle(only_one_node))
