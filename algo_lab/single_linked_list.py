@@ -10,6 +10,12 @@ class Node:
     def __repr__(self):
         return self.data
 
+    def __iter__(self):
+        node = self
+        while node:
+            yield node
+            node = node.next
+
 
 class SingleLinkedList:
 

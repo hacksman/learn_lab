@@ -24,6 +24,7 @@ def has_cycle(linked_list):
 
 if __name__ == '__main__':
     not_l_c = SingleLinkedList(["A", "B", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E"])
+    print(has_cycle(l_cycle))
     print(has_cycle(l_c))
     print(has_cycle(not_l_c))
 
