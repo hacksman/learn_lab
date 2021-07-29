@@ -19,6 +19,18 @@ class Node:
             yield node
             node = node.next
 
+    def __ge__(self, other):
+        return self.data >= other.data
+
+    def __le__(self, other):
+        return self.data <= other.data
+
+    def __gt__(self, other):
+        return self.data > other.data
+
+    def __lt__(self, other):
+        return self.data < other.data
+
 
 class SingleLinkedList:
 
@@ -28,11 +40,29 @@ class SingleLinkedList:
             for item in link_values:
                 self.add_last(Node(item))
 
+    def __gt__(self, other):
+        return self.head.data > other.data
+
+    def __lt__(self, other):
+        return self.head.data < other.data
+
+    def __ge__(self, other):
+        return self.head.data >= other.data
+
+    def __le__(self, other):
+        return self.head.data <= other.data
+
     @property
     def next(self):
         if not self.head:
             return None
         return self.head.next
+
+    @property
+    def data(self):
+        if not self.head:
+            return None
+        return self.head.data
 
     def add_first(self, n):
         if not self.head:
