@@ -28,6 +28,12 @@ class SingleLinkedList:
             for item in link_values:
                 self.add_last(Node(item))
 
+    @property
+    def next(self):
+        if not self.head:
+            return None
+        return self.head.next
+
     def add_first(self, n):
         if not self.head:
             self.head = n
