@@ -34,6 +34,7 @@ def has_cycle(head):
     """
      from: https://leetcode-cn.com/problems/linked-list-cycle-lcci/solution/kuai-man-zhi-zhen-python3jie-fa-by-cheri-1l0h/
      需要支持：next 写法
+     检查相遇点
     """
     fast = head
     slow = head
@@ -46,9 +47,9 @@ def has_cycle(head):
             while pre != slow:
                 pre = pre.next
                 slow = slow.next
-            return True
+            return slow
 
-    return False
+    return
 
 
 if __name__ == '__main__':
