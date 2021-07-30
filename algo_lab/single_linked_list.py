@@ -8,7 +8,10 @@ class Node:
         self.next = next_node
 
     def __repr__(self):
-        return self.data
+        if self:
+            result = [_.data for _ in self]
+            return f"->{'->'.join(map(str, result))}->None"
+        return 'empty Node'
 
     def __iter__(self):
         """
@@ -40,6 +43,24 @@ class SingleLinkedList:
             for item in link_values:
                 self.add_last(Node(item))
 
+    @property
+    def next(self):
+        return self.head.next
+
+    @next.setter
+    def next(self, n):
+        self.head.next = n
+
+    @property
+    def data(self):
+        if not self.head:
+            return None
+        return self.head.data
+
+    @data.setter
+    def data(self, value):
+        self.head.data = value
+
     def __gt__(self, other):
         return self.head.data > other.data
 
@@ -51,18 +72,6 @@ class SingleLinkedList:
 
     def __le__(self, other):
         return self.head.data <= other.data
-
-    @property
-    def next(self):
-        if not self.head:
-            return None
-        return self.head.next
-
-    @property
-    def data(self):
-        if not self.head:
-            return None
-        return self.head.data
 
     def add_first(self, n):
         if not self.head:
@@ -144,7 +153,7 @@ class SingleLinkedList:
     def __repr__(self):
         if self.head:
             result = [_.data for _ in self]
-            return f"->{'->'.join(result)}->None"
+            return f"->{'->'.join(map(str, result))}->None"
         return 'empty linked list'
 
 
@@ -166,7 +175,7 @@ if __name__ == '__main__':
     s.head.next.next.next.next.next = s.head.next.next
 
     #     pass
-    # s.add_after('D', E)
+    # s.add_after('B', E)
     # s.remove_node('F')
     # print(next(s))
     # print(next(s))
