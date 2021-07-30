@@ -11,10 +11,12 @@ def remove(linked_list, n):
         return
     else:
         i = length - n
+        prev = linked_list
         for l_i, node in enumerate(linked_list):
             if l_i == i:
-                linked_list.remove_node(node.data)
+                prev.next = node.next
                 break
+            prev = node
 
 
 if __name__ == '__main__':
