@@ -12,7 +12,7 @@ def merge(h1, h2):
     if h2 is None:
         return h1
 
-    if (h1.data < h2.data):
+    if h1.data < h2.data:
         h1.next = merge(h1.next, h2)
         return h1
     else:
