@@ -1,6 +1,6 @@
 # coding: utf-8
 # @Time : 7/28/21 8:24 AM
-from algo_lab.single_linked_list import SingleLinkedList
+from algo_lab.single_linked_list import SingleLinkedList, Node
 
 
 # def has_cycle(linked_list):
@@ -30,20 +30,20 @@ from algo_lab.single_linked_list import SingleLinkedList
 #     return False
 
 
-def has_cycle(head):
+def has_cycle(linked_list):
     """
      from: https://leetcode-cn.com/problems/linked-list-cycle-lcci/solution/kuai-man-zhi-zhen-python3jie-fa-by-cheri-1l0h/
      需要支持：next 写法
      检查相遇点
     """
-    fast = head
-    slow = head
+    fast = linked_list.head
+    slow = linked_list.head
 
     while fast and fast.next:
         fast = fast.next.next
         slow = slow.next
         if fast == slow:
-            pre = head
+            pre = linked_list.head
             while pre != slow:
                 pre = pre.next
                 slow = slow.next
@@ -56,12 +56,12 @@ if __name__ == '__main__':
     # A -> B -> C -> D  -> E
     #             ↖ - - - -
     l = SingleLinkedList(["A", "B", "C", "D", "E"])
-    l.next.next.next.next.next = l.next.next
+    l.head.next.next.next.next.next = l.head.next.next
 
     # A -> B -> C -> D
     #  ↖ - - - - - -
     l_c = SingleLinkedList(["A", "B", "C", "D"])
-    l_c.next.next.next.next = l
+    l_c.head.next.next.next.next = l_c.head
 
     # A -> B -> C -> D -> E  -> C -> D -> E -> C -> D -> E -> C -> D -> E -> C -> D -> E
     not_l_c = SingleLinkedList(["A", "B", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E", "C", "D", "E"])
