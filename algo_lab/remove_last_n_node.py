@@ -23,3 +23,7 @@ if __name__ == '__main__':
     s = SingleLinkedList(['A', 'B', 'C', 'D', 'E', 'F'])
     remove(s, 3)
     print(s)
+
+    s = SingleLinkedList(['A', 'C', 'D', 'C', 'C', 'E', 'F'])
+    remove(s, 4)
+    print(s)
