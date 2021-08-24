@@ -25,6 +25,7 @@
 # '259.123.2.31' 非法 - 数字超过有效范围
 # '251。123.2.31' 非法 - 分割段非 "." 字符
 # '231.23.1' 非法 - IP 地址段由四段构成
+# '233..33.2' 非法 - 子字段无值
 # '1a.23.1.21' 非法 - 地址段字符非数字
 # "", None 非法 - 为空
 
@@ -59,6 +60,7 @@ assert check_ip_valid('12. 12 .2 1.12') is False
 assert check_ip_valid('259.123.2.31') is False
 assert check_ip_valid('251。123.2.31') is False
 assert check_ip_valid('231.23.1') is False
+assert check_ip_valid('233..33.2') is False
 assert check_ip_valid('1a.23.1.21') is False
 assert check_ip_valid('') is False
 
