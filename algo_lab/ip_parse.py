@@ -19,3 +19,45 @@
 # step 4：第一轮编写代码（写注释，当代码模块化，逻辑更清楚）
 # step 5：使用测试用例验证代码，并完善代码
 
+# '123.92.2.34' 合法
+# ' 123. 91 .12 .31 ' 合法
+# '12. 12 .2 1.12' 非法 - 空格在中间
+# '259.123.2.31' 非法 - 数字超过有效范围
+# '251。123.2.31' 非法 - 分割段非 "." 字符
+# '231.23.1' 非法 - IP 地址段由四段构成
+# '1a.23.1.21' 非法 - 地址段字符非数字
+# "", None 非法 - 为空
+
+def check_ip_valid(ip):
+    def _is_valid_ip(single_ip):
+        # 校验是否是正整数的情况
+        if not single_ip.isdigit():
+            return False
+        # 校验数字合法范围
+        ip_num = int(single_ip)
+        if not 0 <= ip_num <= 255:
+            return False
+        return True
+
+    # 校验空情况
+    if not ip:
+        return False
+    # 分段情况
+    if len(ip.split(".")) != 4:
+        return False
+    # 判断每一段是否合法的情况
+    part_ips = ip.split('.')
+    for per_ip in part_ips:
+        if not _is_valid_ip(per_ip.strip()):
+            return False
+    return True
+
+
+print(check_ip_valid('123.92.2.34'))
+print(check_ip_valid(' 123. 91 .12 .31 '))
+print(check_ip_valid('12. 12 .2 1.12'))
+print(check_ip_valid('259.123.2.31'))
+print(check_ip_valid('251。123.2.31'))
+print(check_ip_valid('231.23.1'))
+print(check_ip_valid('1a.23.1.21'))
+print(check_ip_valid(''))
