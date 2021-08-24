@@ -53,12 +53,12 @@ def check_ip_valid(ip):
     return True
 
 
-print(check_ip_valid('123.92.2.34'))
-print(check_ip_valid(' 123. 91 .12 .31 '))
-print(check_ip_valid('12. 12 .2 1.12'))
-print(check_ip_valid('259.123.2.31'))
-print(check_ip_valid('251。123.2.31'))
-print(check_ip_valid('231.23.1'))
-print(check_ip_valid('1a.23.1.21'))
-print(check_ip_valid(''))
+assert check_ip_valid('123.92.2.34') is True
+assert check_ip_valid(' 123. 91 .12 .31 ') is True
+assert check_ip_valid('12. 12 .2 1.12') is False
+assert check_ip_valid('259.123.2.31') is False
+assert check_ip_valid('251。123.2.31') is False
+assert check_ip_valid('231.23.1') is False
+assert check_ip_valid('1a.23.1.21') is False
+assert check_ip_valid('') is False
 
